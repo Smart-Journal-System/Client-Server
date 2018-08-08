@@ -7,7 +7,8 @@
     // the root of our application
     export default {
         state: {
-            initialized: false
+            initialized: false,
+            articles: [],
         },
         mutations: {
             initializationStart (state) {
@@ -18,13 +19,22 @@
             },
             journals (state, payload) {
                 state.journals = payload.journals
-            }
+            },
+            articles (state, payload) {
+                state.articles = payload.articles
+            },
         },
         actions: {
             journals (store, payload) {
                 axios.get(API + 'journals')
                     .then((response) => {
                         store.commit('journals', { journals: response.data })
+                    })
+            },
+            articles (store, payload) {
+                axios.get(API + 'articles')
+                    .then((response) => {
+                        store.commit('articles', { articles: response.data })
                     })
             },
             initialize (store, payload) {

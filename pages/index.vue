@@ -50,6 +50,9 @@
                         <nuxt-link class="nav-link" to="/user/signIn">Login</nuxt-link>
                     </li>
                     <li class="nav-item">
+                        <nuxt-link class="nav-link" to="/articles">Articles</nuxt-link>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
                 </ul>
@@ -69,12 +72,6 @@ export default {
     name: 'App',
     components: {
         // FulfillingBouncingCircleSpinner
-    },
-    async fetch({
-        store,
-        params
-    }) {
-        await store.dispatch('journals');
     },
     asyncData({
         req
