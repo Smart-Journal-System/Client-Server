@@ -25,6 +25,12 @@
     text-align: center;
 }
 
+.bd-navbar {
+    min-height: 4rem;
+    background-color: #05668D;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .1);
+}
+
 </style>
 
 <template>
@@ -39,25 +45,26 @@
         </div>
     </div>
     <div v-else>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">SJS <span class="alt">{{ rendered   }}</span></a>
-            <div class="">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <nuxt-link class="nav-link" to="/">Home</nuxt-link>
-                    </li>
+        <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+            <div class="navbar-nav-scroll">
+                <ul class="navbar-nav bd-navbar-nav flex-row">
                     <li class="nav-item">
-                        <nuxt-link class="nav-link" to="/user/signIn">Login</nuxt-link>
+                        <nuxt-link class="nav-link" to="/">Home</nuxt-link>
                     </li>
                     <li class="nav-item">
                         <nuxt-link class="nav-link" to="/articles">Articles</nuxt-link>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
                 </ul>
             </div>
-        </nav>
+
+            <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                <li class="nav-item dropdown">
+                    <nuxt-link class="nav-link" to="/user/signIn">Sign In</nuxt-link>
+                </li>
+
+            </ul>
+        </header>
+
         <nuxt-child/>
     </div>
 </div>
