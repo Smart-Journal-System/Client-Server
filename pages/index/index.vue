@@ -23,6 +23,9 @@
             <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
         </div>
     </div>
+    <div class="container">
+        <a href="#">See More</a>
+    </div>
 </div>
 
 </template>

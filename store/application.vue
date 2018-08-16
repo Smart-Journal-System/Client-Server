@@ -22,6 +22,7 @@
             },
             articles (state, payload) {
                 state.articles = payload.articles
+                state.articlesPage = payload.page
             },
         },
         actions: {
@@ -31,10 +32,14 @@
                         store.commit('journals', { journals: response.data })
                     })
             },
-            articles (store, payload) {
-                axios.get(API + 'articles')
+            async articles (store, payload) {
+                await axios.get(API + 'articles', {
+                    params: {
+                        page: payload.page
+                    }
+                })
                     .then((response) => {
-                        store.commit('articles', { articles: response.data })
+                        store.commit('articles', { articles: response.data.data, page: payload.page })
                     })
             },
             initialize (store, payload) {

@@ -52,16 +52,18 @@
                         <nuxt-link class="nav-link" to="/">Home</nuxt-link>
                     </li>
                     <li class="nav-item">
-                        <nuxt-link class="nav-link" to="/articles">Articles</nuxt-link>
+                        <nuxt-link class="nav-link" :to="{ path: '/articles', query: { page: 5 } }">Articles</nuxt-link>
                     </li>
                 </ul>
             </div>
 
             <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" v-if="!authentication.user">
                     <nuxt-link class="nav-link" to="/user/signIn">Sign In</nuxt-link>
                 </li>
-
+                <li v-if="authentication.user">
+                    <span>Welcome, {{ authentication.user.username }}</span>
+                </li>
             </ul>
         </header>
 
@@ -74,6 +76,7 @@
 <script>
 
 // import { FulfillingBouncingCircleSpinner } from 'epic-spinners'
+import { mapState } from 'vuex'
 
 export default {
     name: 'App',
@@ -90,6 +93,9 @@ export default {
     mounted() {
         this.$store.dispatch('initialize');
     },
+    computed: mapState([
+        'authentication'
+    ])
 }
 
 </script>
